@@ -1,0 +1,37 @@
+<div class="container">
+<div class="room-details">
+  <%= image_tag "chambre-triple-pre-mium.jpg", alt: "Image of #{@room.name}" %>
+  <h1><%= @room.name %></h1>
+  <p><strong>Price per night:</strong> <%= @room.price %> €</p>
+  <p><strong>Hotel:</strong> <%= @room.hotel.name %>, <%= @room.hotel.address %></p>
+  <p><%= @room.description %></p>
+  <p>Just a 15-minute walk from Pasadena and el monte the Hostel Garden offers rooms with air conditioning, TV, and free Wi-Fi...</p>
+</div>
+
+<div class="booking-form">
+  <h2>Your booking</h2>
+    <%= form_with(model: @booking, url: bookings_path, local: true) do |f| %>
+  <div>
+    <%= f.label :check_in, "Check-in date" %>
+    <%= f.date_field :check_in, value: Date.today, required: true %>
+  </div>
+  <div>
+    <%= f.label :check_out, "Check-out date" %>
+    <%= f.date_field :check_out, value: Date.today + 1, required: true %>
+  </div>
+  <div>
+    <%= f.label :guests, "Number of guests" %>
+    <%= f.number_field :guests, min: 1, value: 1, required: true %>
+  </div>
+  <div>
+    <%= f.hidden_field :room_id, value: @room.id %>
+  </div>
+  <div>
+    <%= f.submit "Book your room", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+</div>
+
+
+</div>

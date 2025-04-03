@@ -1,0 +1,27 @@
+
+<div class="banner">
+  <h1>Go Further, Pay Less!</h1>
+  <form action="/rooms" method="get">
+    <div class="search-bar">
+      <input type="text" name="location" placeholder="Where?" />
+      <input type="date" name="start_date" />
+      <input type="date" name="end_date" />
+      <button type="submit">Search</button>
+    </div>
+  </form>
+</div>
+
+<div class="favorite-rooms">
+  <h2>Favorite Rooms to Stay</h2>
+  <div class="rooms-grid">
+    <% @rooms.each do |room| %>
+      <div class="room-card">
+        <h3><%= room.name %></h3>
+        <%= image_tag "chambre-triple-pre-mium.jpg", alt: "Image of #{room.name}" %>
+        <p><strong>Price per night:</strong> <%= room.price %>€</p>
+        <p><strong>Hotel:</strong> <%= room.hotel.name %>, <%= room.hotel.address %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+

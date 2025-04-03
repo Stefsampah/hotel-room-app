@@ -1,0 +1,23 @@
+<div class="contain">
+<div class="search-bar">
+  <h1>Find the Perfect Room</h1>
+  <form action="/rooms" method="get">
+    <input type="text" name="search" placeholder="Where?" value="<%= params[:search] %>" />
+    <input type="date" name="start_date" />
+    <input type="date" name="end_date" />
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+
+<div class="rooms-container">
+  <% @rooms.each do |room| %>
+    <div class="room-card">
+      <%= image_tag "chambre-triple-pre-mium.jpg", alt: "Image of #{room.name}" %>
+      <h3><%= room.name %></h3>
+      <p><strong>Price per night:</strong> <%= room.price %> €</p>
+      <p><strong>Hotel:</strong> <%= room.hotel.name %>, <%= room.hotel.address %></p>
+    </div>
+  <% end %>
+</div>
+</div>
